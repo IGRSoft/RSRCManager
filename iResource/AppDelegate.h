@@ -10,6 +10,6 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property (weak) IBOutlet NSCollectionView *collectionView;
 
 @end
-

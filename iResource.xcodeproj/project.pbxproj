@@ -9,10 +9,15 @@
 /* Begin PBXBuildFile section */
 		A59625CE1A45F4250056303D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CD1A45F4250056303D /* AppDelegate.m */; };
 		A59625D01A45F4250056303D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CF1A45F4250056303D /* main.m */; };
-		A59625D31A45F4250056303D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625D21A45F4250056303D /* ViewController.m */; };
 		A59625E41A45F4250056303D /* iResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625E31A45F4250056303D /* iResourceTests.m */; };
-		A59625F11A45F4B60056303D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A59625EE1A45F4B60056303D /* Main.storyboard */; };
-		A59625F21A45F4B60056303D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A59625F01A45F4B60056303D /* Images.xcassets */; };
+		A59625F71A45FE8E0056303D /* ResourceEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625F41A45FE8E0056303D /* ResourceEntities.m */; };
+		A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */; };
+		A59626021A460BDB0056303D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59625FA1A460BDB0056303D /* MainMenu.xib */; };
+		A59626031A460BDB0056303D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A59625FD1A460BDB0056303D /* Credits.rtf */; };
+		A59626041A460BDB0056303D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A59625FF1A460BDB0056303D /* InfoPlist.strings */; };
+		A59626051A460BDB0056303D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A59626011A460BDB0056303D /* Images.xcassets */; };
+		A59626081A460DE00056303D /* IGRResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A59626071A460DE00056303D /* IGRResourceManager.m */; };
+		A59626101A4610570056303D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A596260D1A4610570056303D /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +36,22 @@
 		A59625CC1A45F4250056303D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A59625CD1A45F4250056303D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A59625CF1A45F4250056303D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A59625D11A45F4250056303D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A59625D21A45F4250056303D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A59625DD1A45F4250056303D /* iResourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iResourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59625E21A45F4250056303D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A59625E31A45F4250056303D /* iResourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iResourceTests.m; sourceTree = "<group>"; };
-		A59625EF1A45F4B60056303D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A59625F01A45F4B60056303D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A59625F31A45FE8E0056303D /* ResourceEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceEntities.h; sourceTree = "<group>"; };
+		A59625F41A45FE8E0056303D /* ResourceEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceEntities.m; sourceTree = "<group>"; };
+		A59625F51A45FE8E0056303D /* ResourceCollectionItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionItemView.h; sourceTree = "<group>"; };
+		A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionItemView.m; sourceTree = "<group>"; };
+		A59625FB1A460BDB0056303D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
+		A59625FE1A460BDB0056303D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Credits.rtf; sourceTree = "<group>"; };
+		A59626001A460BDB0056303D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		A59626011A460BDB0056303D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A59626061A460DE00056303D /* IGRResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRResourceManager.h; sourceTree = "<group>"; };
+		A59626071A460DE00056303D /* IGRResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRResourceManager.m; sourceTree = "<group>"; };
+		A596260D1A4610570056303D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		A596260E1A4610570056303D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A596260F1A4610570056303D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59626101A4610570056303D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +79,7 @@
 				A59625C91A45F4250056303D /* iResource */,
 				A59625E01A45F4250056303D /* iResourceTests */,
 				A59625ED1A45F4B60056303D /* Resources */,
+				A596260C1A4610420056303D /* Frameworks */,
 				A59625C81A45F4250056303D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,8 +98,12 @@
 			children = (
 				A59625CC1A45F4250056303D /* AppDelegate.h */,
 				A59625CD1A45F4250056303D /* AppDelegate.m */,
-				A59625D11A45F4250056303D /* ViewController.h */,
-				A59625D21A45F4250056303D /* ViewController.m */,
+				A59625F31A45FE8E0056303D /* ResourceEntities.h */,
+				A59625F41A45FE8E0056303D /* ResourceEntities.m */,
+				A59625F51A45FE8E0056303D /* ResourceCollectionItemView.h */,
+				A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */,
+				A59626061A460DE00056303D /* IGRResourceManager.h */,
+				A59626071A460DE00056303D /* IGRResourceManager.m */,
 				A59625CA1A45F4250056303D /* Supporting Files */,
 			);
 			path = iResource;
@@ -118,10 +138,22 @@
 		A59625ED1A45F4B60056303D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A59625EE1A45F4B60056303D /* Main.storyboard */,
-				A59625F01A45F4B60056303D /* Images.xcassets */,
+				A59625FA1A460BDB0056303D /* MainMenu.xib */,
+				A59625FD1A460BDB0056303D /* Credits.rtf */,
+				A59625FF1A460BDB0056303D /* InfoPlist.strings */,
+				A59626011A460BDB0056303D /* Images.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A596260C1A4610420056303D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A596260D1A4610570056303D /* Cocoa.framework */,
+				A596260E1A4610570056303D /* AppKit.framework */,
+				A596260F1A4610570056303D /* Foundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +236,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59625F11A45F4B60056303D /* Main.storyboard in Resources */,
-				A59625F21A45F4B60056303D /* Images.xcassets in Resources */,
+				A59626021A460BDB0056303D /* MainMenu.xib in Resources */,
+				A59626051A460BDB0056303D /* Images.xcassets in Resources */,
+				A59626041A460BDB0056303D /* InfoPlist.strings in Resources */,
+				A59626031A460BDB0056303D /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,9 +257,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59625D31A45F4250056303D /* ViewController.m in Sources */,
+				A59626081A460DE00056303D /* IGRResourceManager.m in Sources */,
+				A59625F71A45FE8E0056303D /* ResourceEntities.m in Sources */,
 				A59625D01A45F4250056303D /* main.m in Sources */,
 				A59625CE1A45F4250056303D /* AppDelegate.m in Sources */,
+				A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,12 +284,31 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A59625EE1A45F4B60056303D /* Main.storyboard */ = {
+		A59625FA1A460BDB0056303D /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A59625EF1A45F4B60056303D /* Base */,
+				A59625FB1A460BDB0056303D /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainMenu.xib;
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		A59625FD1A460BDB0056303D /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A59625FE1A460BDB0056303D /* en */,
+			);
+			name = Credits.rtf;
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		A59625FF1A460BDB0056303D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A59626001A460BDB0056303D /* en */,
+			);
+			name = InfoPlist.strings;
+			path = en.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
