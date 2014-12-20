@@ -7,6 +7,7 @@
 //
 
 #import "ResourceCollectionItemView.h"
+#import "ResourceEntities.h"
 
 @implementation ResourceCollectionItemView
 
@@ -69,6 +70,18 @@
 {
 	[(ResourceCollectionItemView *)[self view] setIsSelected:selected];
 	[super setSelected:selected];
+}
+
+- (IBAction)exportFile:(id)sender
+{
+	ResourceEntities *res = self.collectionView.content[self.collectionView.selectionIndexes.firstIndex];
+	
+	NSBitmapImageRep *imgRep = [[res.image representations] objectAtIndex: 0];
+	NSData *data = [imgRep representationUsingType: NSPNGFileType properties: nil];
+	
+	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES );
+	NSString* theDesktopPath = [paths objectAtIndex:0];
+	[data writeToFile: [NSString stringWithFormat:@"%@/%@.png", theDesktopPath, res.name] atomically: NO];
 }
 
 @end

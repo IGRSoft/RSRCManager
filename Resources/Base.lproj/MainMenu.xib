@@ -14,6 +14,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="collectionView" destination="Biv-Hp-2We" id="hgt-C5-ARe"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="mKP-zD-IdU"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -67,14 +68,9 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="File" id="bib-Uj-vzu">
                         <items>
-                            <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
-                                <connections>
-                                    <action selector="newDocument:" target="-1" id="4Si-XN-c54"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
-                                    <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>
+                                    <action selector="openFile:" target="Voe-Tx-rLC" id="e4H-0T-bzE"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="tXI-mr-wws">
@@ -702,6 +698,7 @@
                     </scrollView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="404" y="240"/>
         </window>
         <collectionViewItem id="98m-3m-C57" customClass="ResourceCollectionItem">
             <connections>
@@ -715,7 +712,7 @@
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Tda-wk-nOj">
                     <rect key="frame" x="21" y="32" width="62" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="AXP-1J-8ZA"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="AXP-1J-8ZA"/>
                     <connections>
                         <binding destination="98m-3m-C57" name="value" keyPath="representedObject.image" id="nD8-EJ-wT3"/>
                     </connections>
@@ -732,7 +729,26 @@
                         <binding destination="98m-3m-C57" name="value" keyPath="representedObject.name" id="UuS-9d-A6F"/>
                     </connections>
                 </textField>
+                <button id="MXD-SX-N9I">
+                    <rect key="frame" x="69" y="72" width="37" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="89W-3K-TGk">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="exportFile:" target="98m-3m-C57" id="Tzz-eo-QLS"/>
+                        <binding destination="98m-3m-C57" name="hidden" keyPath="self.selected" id="eDg-Y4-pb7">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
             </subviews>
         </view>
     </objects>
+    <resources>
+        <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>
+    </resources>
 </document>
