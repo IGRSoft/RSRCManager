@@ -8,6 +8,7 @@
 
 #import "ResourceCollectionItemView.h"
 #import "ResourceEntities.h"
+#import "AppDelegate.h"
 
 @implementation ResourceCollectionItemView
 
@@ -76,12 +77,8 @@
 {
 	ResourceEntities *res = self.collectionView.content[self.collectionView.selectionIndexes.firstIndex];
 	
-	NSBitmapImageRep *imgRep = [[res.image representations] objectAtIndex: 0];
-	NSData *data = [imgRep representationUsingType: NSPNGFileType properties: nil];
-	
-	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES );
-	NSString* theDesktopPath = [paths objectAtIndex:0];
-	[data writeToFile: [NSString stringWithFormat:@"%@/%@.png", theDesktopPath, res.name] atomically: NO];
+	AppDelegate *app = [[NSApplication sharedApplication] delegate];
+	[app saveResource:res];
 }
 
 @end

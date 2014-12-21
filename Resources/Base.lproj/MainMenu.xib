@@ -14,6 +14,8 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="collectionView" destination="Biv-Hp-2We" id="hgt-C5-ARe"/>
+                <outlet property="exportPath" destination="zYP-It-bHI" id="gM0-Zc-QFV"/>
+                <outlet property="spinerView" destination="WWy-px-EHy" id="NSC-zY-yfO"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="mKP-zD-IdU"/>
             </connections>
         </customObject>
@@ -664,14 +666,14 @@
         </menu>
         <window title="iResource" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="649" height="550"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="-5" width="649" height="550"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="86M-EY-7Zg">
-                        <rect key="frame" x="20" y="20" width="440" height="320"/>
+                        <rect key="frame" x="20" y="61" width="609" height="469"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="VqR-zJ-nhk">
                             <rect key="frame" x="1" y="1" width="438" height="318"/>
@@ -696,9 +698,36 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button verticalHuggingPriority="750" id="z1v-QW-x0W">
+                        <rect key="frame" x="535" y="13" width="100" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Export All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uvh-ar-Znn">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="exportAllResources:" target="Voe-Tx-rLC" id="ZD4-gl-je8"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" id="zYP-It-bHI">
+                        <rect key="frame" x="20" y="19" width="513" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="J0r-B4-RGE">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="1w8-ck-fyZ" name="value" keyPath="values.ExportPath" id="lkA-Vx-rLe"/>
+                        </connections>
+                    </textField>
+                    <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" id="WWy-px-EHy">
+                        <rect key="frame" x="308" y="279" width="32" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </progressIndicator>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="404" y="240"/>
+            <point key="canvasLocation" x="488.5" y="335"/>
         </window>
         <collectionViewItem id="98m-3m-C57" customClass="ResourceCollectionItem">
             <connections>
@@ -729,11 +758,11 @@
                         <binding destination="98m-3m-C57" name="value" keyPath="representedObject.name" id="UuS-9d-A6F"/>
                     </connections>
                 </textField>
-                <button id="MXD-SX-N9I">
-                    <rect key="frame" x="69" y="72" width="37" height="32"/>
+                <button hidden="YES" canDrawConcurrently="YES" focusRingType="none" id="MXD-SX-N9I">
+                    <rect key="frame" x="71" y="70" width="26" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="89W-3K-TGk">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="circular" image="NSFollowLinkFreestandingTemplate" imagePosition="only" alignment="center" alternateImage="NSFollowLinkFreestandingTemplate" focusRingType="none" inset="2" id="89W-3K-TGk">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
@@ -746,7 +775,9 @@
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="927" y="240"/>
         </view>
+        <userDefaultsController representsSharedInstance="YES" id="1w8-ck-fyZ"/>
     </objects>
     <resources>
         <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>

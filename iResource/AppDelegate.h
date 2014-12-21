@@ -8,9 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ResourceEntities;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSCollectionView *collectionView;
+@property (weak) IBOutlet NSProgressIndicator *spinerView;
+@property (weak) IBOutlet NSTextField *exportPath;
+
+- (void)saveResource:(ResourceEntities *)resourceEntity;
 
 @end

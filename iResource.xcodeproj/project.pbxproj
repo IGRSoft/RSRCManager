@@ -16,7 +16,6 @@
 		A59626031A460BDB0056303D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A59625FD1A460BDB0056303D /* Credits.rtf */; };
 		A59626041A460BDB0056303D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A59625FF1A460BDB0056303D /* InfoPlist.strings */; };
 		A59626051A460BDB0056303D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A59626011A460BDB0056303D /* Images.xcassets */; };
-		A59626081A460DE00056303D /* IGRResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A59626071A460DE00056303D /* IGRResourceManager.m */; };
 		A59626101A4610570056303D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A596260D1A4610570056303D /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,8 +46,6 @@
 		A59625FE1A460BDB0056303D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Credits.rtf; sourceTree = "<group>"; };
 		A59626001A460BDB0056303D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		A59626011A460BDB0056303D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A59626061A460DE00056303D /* IGRResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRResourceManager.h; sourceTree = "<group>"; };
-		A59626071A460DE00056303D /* IGRResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRResourceManager.m; sourceTree = "<group>"; };
 		A596260D1A4610570056303D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A596260E1A4610570056303D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A596260F1A4610570056303D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -102,8 +99,6 @@
 				A59625F41A45FE8E0056303D /* ResourceEntities.m */,
 				A59625F51A45FE8E0056303D /* ResourceCollectionItemView.h */,
 				A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */,
-				A59626061A460DE00056303D /* IGRResourceManager.h */,
-				A59626071A460DE00056303D /* IGRResourceManager.m */,
 				A59625CA1A45F4250056303D /* Supporting Files */,
 			);
 			path = iResource;
@@ -257,7 +252,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59626081A460DE00056303D /* IGRResourceManager.m in Sources */,
 				A59625F71A45FE8E0056303D /* ResourceEntities.m in Sources */,
 				A59625D01A45F4250056303D /* main.m in Sources */,
 				A59625CE1A45F4250056303D /* AppDelegate.m in Sources */,

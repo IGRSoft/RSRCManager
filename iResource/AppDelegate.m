@@ -14,6 +14,7 @@
 - (IBAction)openFile:(id)sender;
 
 @property (nonatomic, strong) NSURL *resourceURL;
+@property (nonatomic, strong) NSMutableArray *resourceData;
 
 @end
 
@@ -91,13 +92,15 @@
 		return;
 	};
 	
-	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
+	self.resourceData = [[NSMutableArray alloc] init];
+	
+	__weak typeof(self) weakSelf = self;
+	
+	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 	dispatch_async(queue, ^{
 	
 		ResType theType = 'PNG ';
 		ResourceCount count = CountResources(theType);
-		
-		NSMutableArray *_appData = [[NSMutableArray alloc]init];
 		
 		for (int x = 1; x <= count; ++x)
 		{
@@ -120,8 +123,8 @@
 					item.image = result;
 					item.name = [NSString stringWithFormat:@"%@", @(theID)];
 					
-					[_appData addObject:item];
-					[self performSelectorOnMainThread:@selector(updateData:) withObject:_appData waitUntilDone:YES];
+					[weakSelf.resourceData addObject:item];
+					[weakSelf performSelectorOnMainThread:@selector(updateData:) withObject:weakSelf.resourceData waitUntilDone:YES];
 				}
 				
 				ReleaseResource(resource);
@@ -137,6 +140,48 @@
 - (void)updateData:(NSMutableArray *)obj
 {
     [_collectionView setContent:obj];
+}
+
+- (IBAction)exportAllResources:(id)sender
+{
+	[self.spinerView startAnimation:self];
+	[self.collectionView setHidden:YES];
+	
+	for (ResourceEntities *item in self.resourceData)
+	{
+		[self saveResource:item];
+	}
+	
+	[self.collectionView setHidden:NO];
+	[self.spinerView stopAnimation:self];
+}
+
+- (void)saveResource:(ResourceEntities *)resourceEntity
+{
+	if (![[NSFileManager defaultManager] fileExistsAtPath:self.exportPath.stringValue isDirectory:nil])
+	{
+		[[NSFileManager defaultManager] createDirectoryAtPath:self.exportPath.stringValue withIntermediateDirectories:YES attributes:nil error:nil];
+	}
+	
+	NSBitmapImageRep *imgRep = [[resourceEntity.image representations] objectAtIndex: 0];
+	NSData *data = [imgRep representationUsingType: NSPNGFileType properties: nil];
+	
+	[data writeToFile: [NSString stringWithFormat:@"%@/%@.png", self.exportPath.stringValue, resourceEntity.name] atomically: NO];
+}
+
+#pragma mark - Preference
++ (void)initialize
+{
+	// Create a dictionary
+	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+	
+	// Put defaults in the dictionary
+	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES );
+	NSString* theDesktopPath = [paths objectAtIndex:0];
+	defaultValues[@"ExportPath"] = theDesktopPath;
+	
+	// Register the dictionary of defaults
+	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 }
 
 @end
