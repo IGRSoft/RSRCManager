@@ -35,8 +35,7 @@
 
 - (void)awakeFromNib
 {
-    [_collectionView setSelectable:YES];
-    [NSThread detachNewThreadSelector:@selector(gatherAppData) toTarget:self withObject:nil];
+
 }
 
 - (IBAction)openFile:(id)sender
@@ -78,63 +77,90 @@
 
 - (void)gatherAppData
 {
-	FSRef fsRef;
-	bool OK = CFURLGetFSRef((__bridge CFURLRef)self.resourceURL, &fsRef);
-	if (!OK)
-	{
-		return;
-	}
-	
-	ResFileRefNum refNum;
-	OSStatus status = FSOpenResourceFile(&fsRef, 0, NULL, fsRdPerm, &refNum);
-	if (status != noErr)
-	{
-		return;
-	};
-	
-	self.resourceData = [[NSMutableArray alloc] init];
-	
 	__weak typeof(self) weakSelf = self;
 	
-	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
 	dispatch_async(queue, ^{
-	
-		ResType theType = 'PNG ';
-		ResourceCount count = CountResources(theType);
 		
-		for (int x = 1; x <= count; ++x)
+		NSFileHandle *file;
+		NSData *databuffer;
+		
+		file = [NSFileHandle fileHandleForReadingAtPath:[weakSelf.resourceURL path]];
+		
+		if (file == nil)
+			NSLog(@"Failed to open file");
+		
+		databuffer = [file readDataToEndOfFile];
+		
+		weakSelf.resourceData = [[NSMutableArray alloc] init];
+		
+		NSData *pattern = [@"PNG " dataUsingEncoding:NSUTF8StringEncoding];
+		NSRange range = [databuffer rangeOfData:pattern options:0 range:NSMakeRange(0, databuffer.length)];
+		
+		NSUInteger pngInfoPos = range.location + range.length;
+		[file seekToFileOffset:pngInfoPos];
+		
+		NSUInteger readBytes = 2;
+		NSUInteger idOffsetBytes = 10;
+		
+		NSUInteger count = [weakSelf parseIntFromData:[file readDataOfLength:readBytes]];
+		
+		pngInfoPos += (readBytes + readBytes);
+		[file seekToFileOffset:pngInfoPos];
+		
+		NSMutableArray *IDs = [NSMutableArray array];
+		for (NSInteger i = 0; i <= count; ++i)
 		{
-			Handle resource = Get1IndResource(theType, x);
-			if (resource)
-			{
-				ResID theID;
-				ResType theType;
-				Str255     name;
-				
-				GetResInfo(resource, &theID, &theType, name);
-				
-				// Hay guise, did you know we don't need to call HLock() on Mac OS X? Groovy!
-				NSData *data = [NSData dataWithBytes:*resource length:GetHandleSize(resource)];
-				NSImage *result = [[NSImage alloc] initWithData:data];
-				
-				if (result)
-				{
-					ResourceEntities *item = [[ResourceEntities alloc] init];
-					item.image = result;
-					item.name = [NSString stringWithFormat:@"%@", @(theID)];
-					
-					[weakSelf.resourceData addObject:item];
-					[weakSelf performSelectorOnMainThread:@selector(updateData:) withObject:weakSelf.resourceData waitUntilDone:YES];
-				}
-				
-				ReleaseResource(resource);
-			}
+			NSUInteger resourceId = [weakSelf parseIntFromData:[file readDataOfLength:readBytes]];
+			[IDs addObject:@(resourceId)];
+			
+			pngInfoPos += (idOffsetBytes + readBytes);
+			[file seekToFileOffset:pngInfoPos];
 		}
 		
-		CloseResFile(refNum);
-	
+		NSUInteger startPosition = 256;
+		readBytes = 4;
+		
+		[file seekToFileOffset:startPosition];
+		for (NSInteger i = 0; i <= count; ++i)
+		{
+			NSUInteger size = [weakSelf parseIntFromData:[file readDataOfLength:readBytes]];
+			
+			startPosition += readBytes;
+			[file seekToFileOffset:startPosition];
+			
+			NSData *data = [file readDataOfLength:size];
+			NSImage *result = [[NSImage alloc] initWithData:data];
+			
+			if (result)
+			{
+				ResourceEntities *item = [[ResourceEntities alloc] init];
+				item.image = result;
+				item.name = [NSString stringWithFormat:@"%@", IDs[i]];
+				
+				[self.resourceData addObject:item];
+			}
+			
+			[weakSelf performSelectorOnMainThread:@selector(updateData:) withObject:weakSelf.resourceData waitUntilDone:YES];
+			
+			startPosition += size;
+			[file seekToFileOffset:startPosition];
+		}
+		
+		[file closeFile];
 	});
+}
+
+- (unsigned)parseIntFromData:(NSData *)data
+{
+	NSString *dataDescription = [data description];
+	NSString *dataAsString = [dataDescription substringWithRange:NSMakeRange(1, [dataDescription length]-2)];
 	
+	unsigned intData = 0;
+	NSScanner *scanner = [NSScanner scannerWithString:dataAsString];
+	[scanner scanHexInt:&intData];
+	
+	return intData;
 }
 
 - (void)updateData:(NSMutableArray *)obj
