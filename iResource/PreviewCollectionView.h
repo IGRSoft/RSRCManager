@@ -10,7 +10,7 @@
 
 @protocol QuickLookCollectionViewDelegate <NSObject>
 @required
-- (void)didPressSpacebarForCollectionView:(NSCollectionView *)tableView;
+- (void)didPressSpacebarForCollectionView:(NSCollectionView *)collectionView;
 - (void)didChangedSelectionCollectionItemView:(NSCollectionViewItem *)collectionViewItem;
 
 @end

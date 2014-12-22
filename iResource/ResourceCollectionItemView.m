@@ -79,7 +79,7 @@
 
 - (IBAction)exportFile:(id)sender
 {
-	ResourceEntities *res = self.collectionView.content[self.collectionView.selectionIndexes.firstIndex];
+	ResourceEntities *res = self.representedObject;
 	
 	AppDelegate *app = [[NSApplication sharedApplication] delegate];
 	[app saveResource:res];

@@ -20,7 +20,15 @@
 @property (weak) IBOutlet NSTextField *exportPath;
 @property (weak) IBOutlet NSComboBox *typesBox;
 
+@property (nonatomic, assign) BOOL hasResources;
+@property (nonatomic, strong) ResourceEntities *selectedResource;
+
 - (IBAction)openFile:(id)sender;
+
+- (IBAction)exportSelectedResources:(id)sender;
+- (IBAction)exportAllResources:(id)sender;
+
+- (IBAction)toggleQuickLook:(id)sender;
 
 - (void)gatherResources;
 
@@ -47,6 +55,8 @@
 - (void)awakeFromNib
 {
     [_collectionView setSelectable:YES];
+	_hasResources = NO;
+	_selectedResource = nil;
 }
 
 #pragma mark - Actions
@@ -80,9 +90,11 @@
 
 - (void)gatherResources
 {
+	self.hasResources = NO;
+	
     [self.spinerView startAnimation:self];
     [self.collectionView setHidden:YES];
-    
+	
     RSRCManager *resourceManager = [[RSRCManager alloc] initWithFilePath:[self.resourceURL path]];
     __weak typeof(self) weakSelf = self;
     
@@ -100,6 +112,8 @@
             [weakSelf.collectionView setHidden:NO];
             [weakSelf.spinerView stopAnimation:weakSelf];
         });
+		
+		weakSelf.hasResources = weakSelf.typesBox.numberOfItems > 0;
     };
     
     [resourceManager parseData];
@@ -107,6 +121,7 @@
 
 - (void)updateData:(NSMutableArray *)obj
 {
+	self.selectedResource = nil;
     [_collectionView setContent:obj];
 }
 
@@ -124,6 +139,16 @@
 	
 	[self.collectionView setHidden:NO];
 	[self.spinerView stopAnimation:self];
+}
+
+- (IBAction)exportSelectedResources:(id)sender
+{
+	[self saveResource:self.selectedResource];
+}
+
+- (IBAction)toggleQuickLook:(id)sender
+{
+	[self didPressSpacebarForCollectionView:self.collectionView];
 }
 
 - (void)saveResource:(ResourceEntities *)resourceEntity
@@ -191,11 +216,13 @@
 			[[QLPreviewPanel sharedPreviewPanel] refreshCurrentPreviewItem];
 		});
 	}
+	
+	self.selectedResource = collectionViewItem.representedObject;
 }
 
-- (void)didPressSpacebarForCollectionView:(NSCollectionView *)tableView
+- (void)didPressSpacebarForCollectionView:(NSCollectionView *)collectionView
 {
-	if (!_collectionView.content.count)
+	if (!collectionView.content.count)
 	{
 		return;
 	}
