@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A51B42701A48932F00D27AFD /* PreviewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */; };
+		A51B42721A48AA0B00D27AFD /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B42711A48AA0B00D27AFD /* Quartz.framework */; };
 		A59625CE1A45F4250056303D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CD1A45F4250056303D /* AppDelegate.m */; };
 		A59625D01A45F4250056303D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CF1A45F4250056303D /* main.m */; };
 		A59625E41A45F4250056303D /* iResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625E31A45F4250056303D /* iResourceTests.m */; };
@@ -32,6 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A51B426E1A48932F00D27AFD /* PreviewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewCollectionView.h; sourceTree = "<group>"; };
+		A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewCollectionView.m; sourceTree = "<group>"; };
+		A51B42711A48AA0B00D27AFD /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		A59625C71A45F4250056303D /* iResource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iResource.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59625CB1A45F4250056303D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A59625CC1A45F4250056303D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51B42721A48AA0B00D27AFD /* Quartz.framework in Frameworks */,
 				A59626101A4610570056303D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +112,8 @@
 				A59625F51A45FE8E0056303D /* ResourceCollectionItemView.h */,
 				A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */,
 				A59625CA1A45F4250056303D /* Supporting Files */,
+				A51B426E1A48932F00D27AFD /* PreviewCollectionView.h */,
+				A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */,
 			);
 			path = iResource;
 			sourceTree = "<group>";
@@ -150,6 +158,7 @@
 		A596260C1A4610420056303D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A51B42711A48AA0B00D27AFD /* Quartz.framework */,
 				A596260D1A4610570056303D /* Cocoa.framework */,
 				A596260E1A4610570056303D /* AppKit.framework */,
 				A596260F1A4610570056303D /* Foundation.framework */,
@@ -277,6 +286,7 @@
 				A5B600391A4816E400039CDF /* ResourceEntities.m in Sources */,
 				A5B600361A48134800039CDF /* RSRCManager.m in Sources */,
 				A59625CE1A45F4250056303D /* AppDelegate.m in Sources */,
+				A51B42701A48932F00D27AFD /* PreviewCollectionView.m in Sources */,
 				A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

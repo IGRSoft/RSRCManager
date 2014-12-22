@@ -682,12 +682,13 @@
                             <rect key="frame" x="1" y="1" width="438" height="318"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <collectionView id="Biv-Hp-2We">
+                                <collectionView id="Biv-Hp-2We" customClass="PreviewCollectionView">
                                     <rect key="frame" x="0.0" y="0.0" width="438" height="318"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <connections>
                                         <outlet property="itemPrototype" destination="98m-3m-C57" id="ICs-00-g9I"/>
+                                        <outlet property="qlDelegate" destination="Voe-Tx-rLC" id="W42-Xi-jyI"/>
                                     </connections>
                                 </collectionView>
                             </subviews>

@@ -8,11 +8,14 @@
 
 #import "AppDelegate.h"
 #import "RSRCManager.h"
+#import "PreviewCollectionView.h"
 
-@interface AppDelegate ()
+#import <Quartz/Quartz.h>   // for QLPreviewPanel
+
+@interface AppDelegate () <QLPreviewPanelDataSource, QLPreviewPanelDelegate, QuickLookCollectionViewDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
-@property (weak) IBOutlet NSCollectionView *collectionView;
+@property (weak) IBOutlet PreviewCollectionView *collectionView;
 @property (weak) IBOutlet NSProgressIndicator *spinerView;
 @property (weak) IBOutlet NSTextField *exportPath;
 @property (weak) IBOutlet NSComboBox *typesBox;
@@ -45,6 +48,8 @@
 {
     [_collectionView setSelectable:YES];
 }
+
+#pragma mark - Actions
 
 - (IBAction)openFile:(id)sender
 {
@@ -134,7 +139,18 @@
 	[data writeToFile: [NSString stringWithFormat:@"%@/%@.png", self.exportPath.stringValue, resourceEntity.name] atomically: NO];
 }
 
+#pragma mark - NSComboBoxDelegate
+
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification
+{
+	NSComboBox *box = [notification object];
+	NSArray *resources = self.resourceData[box.objectValueOfSelectedItem];
+	
+	[self performSelectorOnMainThread:@selector(updateData:) withObject:resources waitUntilDone:YES];
+}
+
 #pragma mark - Preference
+
 + (void)initialize
 {
 	// Create a dictionary
@@ -161,12 +177,90 @@
     [self gatherResources];
 }
 
-- (void)comboBoxSelectionDidChange:(NSNotification *)notification
+#pragma mark - QuickLookCollectionViewDelegate
+
+- (void)didChangedSelectionCollectionItemView:(NSCollectionViewItem *)collectionViewItem
 {
-    NSComboBox *box = [notification object];
-    NSArray *resources = self.resourceData[box.objectValueOfSelectedItem];
-    
-    [self performSelectorOnMainThread:@selector(updateData:) withObject:resources waitUntilDone:YES];
+	if ([QLPreviewPanel sharedPreviewPanelExists] && [[QLPreviewPanel sharedPreviewPanel] isVisible])
+	{
+		[[QLPreviewPanel sharedPreviewPanel] reloadData];
+		
+		//need delay for write data
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			
+			[[QLPreviewPanel sharedPreviewPanel] refreshCurrentPreviewItem];
+		});
+	}
+}
+
+- (void)didPressSpacebarForCollectionView:(NSCollectionView *)tableView
+{
+	if (!_collectionView.content.count)
+	{
+		return;
+	}
+	
+	if ([QLPreviewPanel sharedPreviewPanelExists] && [[QLPreviewPanel sharedPreviewPanel] isVisible])
+	{
+		[[QLPreviewPanel sharedPreviewPanel] orderOut:nil];
+	}
+	else
+	{
+		[[QLPreviewPanel sharedPreviewPanel] makeKeyAndOrderFront:nil];
+		[[QLPreviewPanel sharedPreviewPanel] reloadData];
+	}
+}
+
+#pragma mark - Preview
+#pragma mark - Quick Look panel support
+
+
+- (NSInteger)numberOfPreviewItemsInPreviewPanel:(QLPreviewPanel *)panel
+{
+	return 1;
+}
+
+- (id<QLPreviewItem>)previewPanel:(QLPreviewPanel *)panel previewItemAtIndex:(NSInteger)index
+{
+	ResourceEntities *res = self.collectionView.content[self.collectionView.selectionIndexes.firstIndex];
+	
+	NSBitmapImageRep *imgRep = [[res.image representations] objectAtIndex: 0];
+	NSData *data = [imgRep representationUsingType: NSPNGFileType properties: nil];
+	
+	NSString* tempPath = NSTemporaryDirectory();
+	NSString *filePath = [NSString stringWithFormat:@"%@/Preview.png", tempPath];
+	
+	[data writeToFile:filePath atomically:NO];
+	
+	return [[NSURL alloc] initFileURLWithPath:filePath];
+}
+
+- (BOOL)acceptsPreviewPanelControl:(QLPreviewPanel *)panel
+{
+	return YES;
+}
+
+- (void)beginPreviewPanelControl:(QLPreviewPanel *)panel
+{
+	panel.dataSource = self;
+	panel.delegate = self;
+}
+
+- (void)endPreviewPanelControl:(QLPreviewPanel *)panel
+{
+	panel.dataSource = nil;
+	panel.delegate = nil;
+}
+
+- (BOOL)previewPanel:(QLPreviewPanel *)panel handleEvent:(NSEvent *)event
+{
+	if ([event type] == NSKeyDown)
+	{
+		[self.collectionView keyDown:event];
+		return YES;
+	}
+	
+	return NO;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ResourceCollectionItemView.h"
 #import "ResourceEntities.h"
+#import "PreviewCollectionView.h"
 #import "AppDelegate.h"
 
 @implementation ResourceCollectionItemView
@@ -71,6 +72,9 @@
 {
 	[(ResourceCollectionItemView *)[self view] setIsSelected:selected];
 	[super setSelected:selected];
+	
+	PreviewCollectionView *cv = (PreviewCollectionView *)self.collectionView;
+	[cv didChangedSelectionCollectionItemView:self];
 }
 
 - (IBAction)exportFile:(id)sender
