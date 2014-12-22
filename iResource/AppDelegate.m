@@ -7,14 +7,22 @@
 //
 
 #import "AppDelegate.h"
-#import "ResourceEntities.h"
+#import "RSRCManager.h"
 
 @interface AppDelegate ()
 
+@property (weak) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSCollectionView *collectionView;
+@property (weak) IBOutlet NSProgressIndicator *spinerView;
+@property (weak) IBOutlet NSTextField *exportPath;
+@property (weak) IBOutlet NSComboBox *typesBox;
+
 - (IBAction)openFile:(id)sender;
 
+- (void)gatherResources;
+
 @property (nonatomic, strong) NSURL *resourceURL;
-@property (nonatomic, strong) NSMutableArray *resourceData;
+@property (nonatomic, strong) NSDictionary *resourceData;
 
 @end
 
@@ -35,7 +43,7 @@
 
 - (void)awakeFromNib
 {
-
+    [_collectionView setSelectable:YES];
 }
 
 - (IBAction)openFile:(id)sender
@@ -57,7 +65,7 @@
 	{
 		//get the selected file URLs
 		self.resourceURL = openPanel.URLs[0];
-		[self gatherAppData];
+		[self gatherResources];
 		
 		NSDocument *document = [[NSDocument alloc] init];
 		document.fileURL = self.resourceURL;
@@ -65,102 +73,31 @@
 	}
 }
 
-- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
+- (void)gatherResources
 {
-	return YES;
-}
-- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
-{
-	self.resourceURL = [NSURL URLWithString:[filenames firstObject]];
-	[self gatherAppData];
-}
-
-- (void)gatherAppData
-{
-	__weak typeof(self) weakSelf = self;
-	
-	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
-	dispatch_async(queue, ^{
-		
-		NSFileHandle *file;
-		NSData *databuffer;
-		
-		file = [NSFileHandle fileHandleForReadingAtPath:[weakSelf.resourceURL path]];
-		
-		if (file == nil)
-			NSLog(@"Failed to open file");
-		
-		databuffer = [file readDataToEndOfFile];
-		
-		weakSelf.resourceData = [[NSMutableArray alloc] init];
-		
-		NSData *pattern = [@"PNG " dataUsingEncoding:NSUTF8StringEncoding];
-		NSRange range = [databuffer rangeOfData:pattern options:0 range:NSMakeRange(0, databuffer.length)];
-		
-		NSUInteger pngInfoPos = range.location + range.length;
-		[file seekToFileOffset:pngInfoPos];
-		
-		NSUInteger readBytes = 2;
-		NSUInteger idOffsetBytes = 10;
-		
-		NSUInteger count = [weakSelf parseIntFromData:[file readDataOfLength:readBytes]];
-		
-		pngInfoPos += (readBytes + readBytes);
-		[file seekToFileOffset:pngInfoPos];
-		
-		NSMutableArray *IDs = [NSMutableArray array];
-		for (NSInteger i = 0; i <= count; ++i)
-		{
-			NSUInteger resourceId = [weakSelf parseIntFromData:[file readDataOfLength:readBytes]];
-			[IDs addObject:@(resourceId)];
-			
-			pngInfoPos += (idOffsetBytes + readBytes);
-			[file seekToFileOffset:pngInfoPos];
-		}
-		
-		NSUInteger startPosition = 256;
-		readBytes = 4;
-		
-		[file seekToFileOffset:startPosition];
-		for (NSInteger i = 0; i <= count; ++i)
-		{
-			NSUInteger size = [weakSelf parseIntFromData:[file readDataOfLength:readBytes]];
-			
-			startPosition += readBytes;
-			[file seekToFileOffset:startPosition];
-			
-			NSData *data = [file readDataOfLength:size];
-			NSImage *result = [[NSImage alloc] initWithData:data];
-			
-			if (result)
-			{
-				ResourceEntities *item = [[ResourceEntities alloc] init];
-				item.image = result;
-				item.name = [NSString stringWithFormat:@"%@", IDs[i]];
-				
-				[self.resourceData addObject:item];
-			}
-			
-			[weakSelf performSelectorOnMainThread:@selector(updateData:) withObject:weakSelf.resourceData waitUntilDone:YES];
-			
-			startPosition += size;
-			[file seekToFileOffset:startPosition];
-		}
-		
-		[file closeFile];
-	});
-}
-
-- (unsigned)parseIntFromData:(NSData *)data
-{
-	NSString *dataDescription = [data description];
-	NSString *dataAsString = [dataDescription substringWithRange:NSMakeRange(1, [dataDescription length]-2)];
-	
-	unsigned intData = 0;
-	NSScanner *scanner = [NSScanner scannerWithString:dataAsString];
-	[scanner scanHexInt:&intData];
-	
-	return intData;
+    [self.spinerView startAnimation:self];
+    [self.collectionView setHidden:YES];
+    
+    RSRCManager *resourceManager = [[RSRCManager alloc] initWithFilePath:[self.resourceURL path]];
+    __weak typeof(self) weakSelf = self;
+    
+    resourceManager.successCompletionBlock = ^(NSDictionary *resources) {
+    
+        weakSelf.resourceData = resources;
+        [weakSelf.typesBox removeAllItems];
+        
+        [weakSelf.typesBox addItemsWithObjectValues:[resources allKeys]];
+        
+        [weakSelf.typesBox selectItemAtIndex:0];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [weakSelf.collectionView setHidden:NO];
+            [weakSelf.spinerView stopAnimation:weakSelf];
+        });
+    };
+    
+    [resourceManager parseData];
 }
 
 - (void)updateData:(NSMutableArray *)obj
@@ -173,7 +110,9 @@
 	[self.spinerView startAnimation:self];
 	[self.collectionView setHidden:YES];
 	
-	for (ResourceEntities *item in self.resourceData)
+    NSArray *resources = self.resourceData[self.typesBox.stringValue];
+    
+	for (ResourceEntities *item in resources)
 	{
 		[self saveResource:item];
 	}
@@ -208,6 +147,26 @@
 	
 	// Register the dictionary of defaults
 	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
+}
+
+#pragma mark - NSApplicationDelegate
+
+- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename
+{
+    return YES;
+}
+- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
+{
+    self.resourceURL = [NSURL URLWithString:[filenames firstObject]];
+    [self gatherResources];
+}
+
+- (void)comboBoxSelectionDidChange:(NSNotification *)notification
+{
+    NSComboBox *box = [notification object];
+    NSArray *resources = self.resourceData[box.objectValueOfSelectedItem];
+    
+    [self performSelectorOnMainThread:@selector(updateData:) withObject:resources waitUntilDone:YES];
 }
 
 @end

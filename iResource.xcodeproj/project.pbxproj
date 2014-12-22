@@ -10,13 +10,15 @@
 		A59625CE1A45F4250056303D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CD1A45F4250056303D /* AppDelegate.m */; };
 		A59625D01A45F4250056303D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CF1A45F4250056303D /* main.m */; };
 		A59625E41A45F4250056303D /* iResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625E31A45F4250056303D /* iResourceTests.m */; };
-		A59625F71A45FE8E0056303D /* ResourceEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625F41A45FE8E0056303D /* ResourceEntities.m */; };
 		A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */; };
 		A59626021A460BDB0056303D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59625FA1A460BDB0056303D /* MainMenu.xib */; };
 		A59626031A460BDB0056303D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A59625FD1A460BDB0056303D /* Credits.rtf */; };
 		A59626041A460BDB0056303D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A59625FF1A460BDB0056303D /* InfoPlist.strings */; };
 		A59626051A460BDB0056303D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A59626011A460BDB0056303D /* Images.xcassets */; };
 		A59626101A4610570056303D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A596260D1A4610570056303D /* Cocoa.framework */; };
+		A5B600351A48134800039CDF /* ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B600311A48134800039CDF /* ResourceManager.m */; };
+		A5B600361A48134800039CDF /* RSRCManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B600341A48134800039CDF /* RSRCManager.m */; };
+		A5B600391A4816E400039CDF /* ResourceEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B600381A4816E400039CDF /* ResourceEntities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +40,6 @@
 		A59625DD1A45F4250056303D /* iResourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iResourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59625E21A45F4250056303D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A59625E31A45F4250056303D /* iResourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iResourceTests.m; sourceTree = "<group>"; };
-		A59625F31A45FE8E0056303D /* ResourceEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceEntities.h; sourceTree = "<group>"; };
-		A59625F41A45FE8E0056303D /* ResourceEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceEntities.m; sourceTree = "<group>"; };
 		A59625F51A45FE8E0056303D /* ResourceCollectionItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionItemView.h; sourceTree = "<group>"; };
 		A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionItemView.m; sourceTree = "<group>"; };
 		A59625FB1A460BDB0056303D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -49,6 +49,13 @@
 		A596260D1A4610570056303D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A596260E1A4610570056303D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A596260F1A4610570056303D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A5B600301A48134800039CDF /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
+		A5B600311A48134800039CDF /* ResourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceManager.m; sourceTree = "<group>"; };
+		A5B600321A48134800039CDF /* ResourceManager_Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager_Protocol.h; sourceTree = "<group>"; };
+		A5B600331A48134800039CDF /* RSRCManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSRCManager.h; sourceTree = "<group>"; };
+		A5B600341A48134800039CDF /* RSRCManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSRCManager.m; sourceTree = "<group>"; };
+		A5B600371A4816E400039CDF /* ResourceEntities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceEntities.h; sourceTree = "<group>"; };
+		A5B600381A4816E400039CDF /* ResourceEntities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceEntities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +100,9 @@
 		A59625C91A45F4250056303D /* iResource */ = {
 			isa = PBXGroup;
 			children = (
+				A5B6002F1A48134800039CDF /* ResourceManager */,
 				A59625CC1A45F4250056303D /* AppDelegate.h */,
 				A59625CD1A45F4250056303D /* AppDelegate.m */,
-				A59625F31A45FE8E0056303D /* ResourceEntities.h */,
-				A59625F41A45FE8E0056303D /* ResourceEntities.m */,
 				A59625F51A45FE8E0056303D /* ResourceCollectionItemView.h */,
 				A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */,
 				A59625CA1A45F4250056303D /* Supporting Files */,
@@ -149,6 +155,20 @@
 				A596260F1A4610570056303D /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5B6002F1A48134800039CDF /* ResourceManager */ = {
+			isa = PBXGroup;
+			children = (
+				A5B600371A4816E400039CDF /* ResourceEntities.h */,
+				A5B600381A4816E400039CDF /* ResourceEntities.m */,
+				A5B600321A48134800039CDF /* ResourceManager_Protocol.h */,
+				A5B600301A48134800039CDF /* ResourceManager.h */,
+				A5B600311A48134800039CDF /* ResourceManager.m */,
+				A5B600331A48134800039CDF /* RSRCManager.h */,
+				A5B600341A48134800039CDF /* RSRCManager.m */,
+			);
+			path = ResourceManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,8 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59625F71A45FE8E0056303D /* ResourceEntities.m in Sources */,
 				A59625D01A45F4250056303D /* main.m in Sources */,
+				A5B600351A48134800039CDF /* ResourceManager.m in Sources */,
+				A5B600391A4816E400039CDF /* ResourceEntities.m in Sources */,
+				A5B600361A48134800039CDF /* RSRCManager.m in Sources */,
 				A59625CE1A45F4250056303D /* AppDelegate.m in Sources */,
 				A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */,
 			);
@@ -312,8 +334,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -328,7 +348,6 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -353,8 +372,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -371,7 +388,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -387,11 +403,11 @@
 		A59625E81A45F4250056303D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "IGR Software";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = iResource/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -400,11 +416,11 @@
 		A59625E91A45F4250056303D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "IGR Software";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = iResource/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
