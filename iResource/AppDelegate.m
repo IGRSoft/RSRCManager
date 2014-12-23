@@ -100,12 +100,15 @@
     
     resourceManager.successCompletionBlock = ^(NSDictionary *resources) {
     
-        weakSelf.resourceData = resources;
-        [weakSelf.typesBox removeAllItems];
-        
-        [weakSelf.typesBox addItemsWithObjectValues:[resources allKeys]];
-        
-        [weakSelf.typesBox selectItemAtIndex:0];
+        if (resources.count)
+        {
+            weakSelf.resourceData = resources;
+            [weakSelf.typesBox removeAllItems];
+            
+            [weakSelf.typesBox addItemsWithObjectValues:[resources allKeys]];
+            
+            [weakSelf.typesBox selectItemAtIndex:0];
+        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -211,10 +214,9 @@
 		[[QLPreviewPanel sharedPreviewPanel] reloadData];
 		
 		//need delay for write data
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			
-			[[QLPreviewPanel sharedPreviewPanel] refreshCurrentPreviewItem];
-		});
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[QLPreviewPanel sharedPreviewPanel] refreshCurrentPreviewItem];
+        });
 	}
 	
 	self.selectedResource = collectionViewItem.representedObject;

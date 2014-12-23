@@ -49,11 +49,15 @@
         for (NSUInteger i = 0; i < resourceTypeCount; ++i)
         {
             NSString *type = [NSString stringWithUTF8String:[[file readDataOfLength:BYTE_4] bytes]];
-            NSUInteger count = [weakSelf parseIntFromData:[file readDataOfLength:BYTE_2]];
             
-            [file readDataOfLength:BYTE_2];
-            
-            weakSelf.resourceData[type] = @(++count);
+            if (type)
+            {
+                NSUInteger count = [weakSelf parseIntFromData:[file readDataOfLength:BYTE_2]];
+                
+                [file readDataOfLength:BYTE_2];
+                
+                weakSelf.resourceData[type] = @(++count);
+            }
         }
         
         NSMutableDictionary *IDs = [NSMutableDictionary dictionary];
@@ -74,7 +78,7 @@
         
         [file seekToFileOffset:weakSelf.startDataPosition];
         
-        for(NSString *type in [resourceData allKeys])
+        for (NSString *type in [resourceData allKeys])
         {
             NSMutableArray *resources = [NSMutableArray array];
             

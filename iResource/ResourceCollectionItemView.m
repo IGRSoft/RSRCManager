@@ -37,15 +37,15 @@
 	
 	if (_isSelected)
 	{
-		fillColor = [NSColor colorWithCalibratedRed: 0.851 green: 0.851 blue: 0.851 alpha: 1];
-		strokeColor = [NSColor colorWithCalibratedRed: 0.408 green: 0.592 blue: 0.855 alpha: 1];
+		fillColor = [NSColor colorWithCalibratedWhite:0.850 alpha:1.000];
+		strokeColor = [NSColor colorWithCalibratedRed:0.400 green:0.650 blue:0.900 alpha:1.000];
 		
 		filedColor = [NSColor blackColor];
 	}
 	else
 	{
 		fillColor = [NSColor clearColor];
-		strokeColor = [NSColor colorWithCalibratedRed: 0.749 green: 0.749 blue: 0.749 alpha: 1];
+		strokeColor = [NSColor colorWithCalibratedWhite:0.850 alpha:1.000];
 		filedColor = [NSColor grayColor];
 	}
 	
