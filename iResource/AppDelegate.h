@@ -14,4 +14,6 @@
 
 - (void)saveResource:(ResourceEntities *)resourceEntity;
 
+- (IBAction)toggleQuickLook:(id)sender;
+
 @end

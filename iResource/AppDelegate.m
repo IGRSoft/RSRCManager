@@ -28,8 +28,6 @@
 - (IBAction)exportSelectedResources:(id)sender;
 - (IBAction)exportAllResources:(id)sender;
 
-- (IBAction)toggleQuickLook:(id)sender;
-
 - (void)gatherResources;
 
 @property (nonatomic, strong) NSURL *resourceURL;

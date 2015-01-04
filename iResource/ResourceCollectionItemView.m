@@ -85,4 +85,10 @@
 	[app saveResource:res];
 }
 
+- (IBAction)quickLookFile:(id)sender
+{	
+	AppDelegate *app = [[NSApplication sharedApplication] delegate];
+	[app toggleQuickLook:self];
+}
+
 @end
