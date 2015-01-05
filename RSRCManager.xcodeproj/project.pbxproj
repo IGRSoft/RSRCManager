@@ -11,7 +11,6 @@
 		A51B42721A48AA0B00D27AFD /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B42711A48AA0B00D27AFD /* Quartz.framework */; };
 		A59625CE1A45F4250056303D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CD1A45F4250056303D /* AppDelegate.m */; };
 		A59625D01A45F4250056303D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CF1A45F4250056303D /* main.m */; };
-		A59625E41A45F4250056303D /* iResourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625E31A45F4250056303D /* iResourceTests.m */; };
 		A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */; };
 		A59626021A460BDB0056303D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59625FA1A460BDB0056303D /* MainMenu.xib */; };
 		A59626031A460BDB0056303D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A59625FD1A460BDB0056303D /* Credits.rtf */; };
@@ -23,28 +22,15 @@
 		A5B600391A4816E400039CDF /* ResourceEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B600381A4816E400039CDF /* ResourceEntities.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A59625DE1A45F4250056303D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A59625BF1A45F4250056303D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A59625C61A45F4250056303D;
-			remoteInfo = iResource;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		A51B426E1A48932F00D27AFD /* PreviewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewCollectionView.h; sourceTree = "<group>"; };
 		A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewCollectionView.m; sourceTree = "<group>"; };
 		A51B42711A48AA0B00D27AFD /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		A59625C71A45F4250056303D /* iResource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iResource.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A59625C71A45F4250056303D /* RSRCManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSRCManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59625CB1A45F4250056303D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A59625CC1A45F4250056303D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A59625CD1A45F4250056303D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A59625CF1A45F4250056303D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A59625DD1A45F4250056303D /* iResourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iResourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A59625E21A45F4250056303D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A59625E31A45F4250056303D /* iResourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iResourceTests.m; sourceTree = "<group>"; };
 		A59625F51A45FE8E0056303D /* ResourceCollectionItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCollectionItemView.h; sourceTree = "<group>"; };
 		A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCollectionItemView.m; sourceTree = "<group>"; };
 		A59625FB1A460BDB0056303D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -73,21 +59,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A59625DA1A45F4250056303D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A59625BE1A45F4250056303D = {
 			isa = PBXGroup;
 			children = (
-				A59625C91A45F4250056303D /* iResource */,
-				A59625E01A45F4250056303D /* iResourceTests */,
+				A59625C91A45F4250056303D /* RSRCManager */,
 				A59625ED1A45F4B60056303D /* Resources */,
 				A596260C1A4610420056303D /* Frameworks */,
 				A59625C81A45F4250056303D /* Products */,
@@ -97,13 +75,12 @@
 		A59625C81A45F4250056303D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A59625C71A45F4250056303D /* iResource.app */,
-				A59625DD1A45F4250056303D /* iResourceTests.xctest */,
+				A59625C71A45F4250056303D /* RSRCManager.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A59625C91A45F4250056303D /* iResource */ = {
+		A59625C91A45F4250056303D /* RSRCManager */ = {
 			isa = PBXGroup;
 			children = (
 				A5B6002F1A48134800039CDF /* ResourceManager */,
@@ -115,7 +92,7 @@
 				A51B426E1A48932F00D27AFD /* PreviewCollectionView.h */,
 				A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */,
 			);
-			path = iResource;
+			path = RSRCManager;
 			sourceTree = "<group>";
 		};
 		A59625CA1A45F4250056303D /* Supporting Files */ = {
@@ -123,23 +100,6 @@
 			children = (
 				A59625CB1A45F4250056303D /* Info.plist */,
 				A59625CF1A45F4250056303D /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A59625E01A45F4250056303D /* iResourceTests */ = {
-			isa = PBXGroup;
-			children = (
-				A59625E31A45F4250056303D /* iResourceTests.m */,
-				A59625E11A45F4250056303D /* Supporting Files */,
-			);
-			path = iResourceTests;
-			sourceTree = "<group>";
-		};
-		A59625E11A45F4250056303D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A59625E21A45F4250056303D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -183,9 +143,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A59625C61A45F4250056303D /* iResource */ = {
+		A59625C61A45F4250056303D /* RSRCManager */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A59625E71A45F4250056303D /* Build configuration list for PBXNativeTarget "iResource" */;
+			buildConfigurationList = A59625E71A45F4250056303D /* Build configuration list for PBXNativeTarget "RSRCManager" */;
 			buildPhases = (
 				A59625C31A45F4250056303D /* Sources */,
 				A59625C41A45F4250056303D /* Frameworks */,
@@ -195,28 +155,10 @@
 			);
 			dependencies = (
 			);
-			name = iResource;
+			name = RSRCManager;
 			productName = iResource;
-			productReference = A59625C71A45F4250056303D /* iResource.app */;
+			productReference = A59625C71A45F4250056303D /* RSRCManager.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A59625DC1A45F4250056303D /* iResourceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A59625EA1A45F4250056303D /* Build configuration list for PBXNativeTarget "iResourceTests" */;
-			buildPhases = (
-				A59625D91A45F4250056303D /* Sources */,
-				A59625DA1A45F4250056303D /* Frameworks */,
-				A59625DB1A45F4250056303D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A59625DF1A45F4250056303D /* PBXTargetDependency */,
-			);
-			name = iResourceTests;
-			productName = iResourceTests;
-			productReference = A59625DD1A45F4250056303D /* iResourceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -230,13 +172,9 @@
 					A59625C61A45F4250056303D = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
-					A59625DC1A45F4250056303D = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = A59625C61A45F4250056303D;
-					};
 				};
 			};
-			buildConfigurationList = A59625C21A45F4250056303D /* Build configuration list for PBXProject "iResource" */;
+			buildConfigurationList = A59625C21A45F4250056303D /* Build configuration list for PBXProject "RSRCManager" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -249,8 +187,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A59625C61A45F4250056303D /* iResource */,
-				A59625DC1A45F4250056303D /* iResourceTests */,
+				A59625C61A45F4250056303D /* RSRCManager */,
 			);
 		};
 /* End PBXProject section */
@@ -264,13 +201,6 @@
 				A59626051A460BDB0056303D /* Images.xcassets in Resources */,
 				A59626041A460BDB0056303D /* InfoPlist.strings in Resources */,
 				A59626031A460BDB0056303D /* Credits.rtf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A59625DB1A45F4250056303D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,23 +221,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A59625D91A45F4250056303D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A59625E41A45F4250056303D /* iResourceTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A59625DF1A45F4250056303D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A59625C61A45F4250056303D /* iResource */;
-			targetProxy = A59625DE1A45F4250056303D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A59625FA1A460BDB0056303D /* MainMenu.xib */ = {
@@ -417,9 +331,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "IGR Software";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = iResource/Info.plist;
+				INFOPLIST_FILE = RSRCManager/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RSRCManager;
 			};
 			name = Debug;
 		};
@@ -430,52 +344,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "IGR Software";
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = iResource/Info.plist;
+				INFOPLIST_FILE = RSRCManager/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		A59625EB1A45F4250056303D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = iResourceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iResource.app/Contents/MacOS/iResource";
-			};
-			name = Debug;
-		};
-		A59625EC1A45F4250056303D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = iResourceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iResource.app/Contents/MacOS/iResource";
+				PRODUCT_NAME = RSRCManager;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A59625C21A45F4250056303D /* Build configuration list for PBXProject "iResource" */ = {
+		A59625C21A45F4250056303D /* Build configuration list for PBXProject "RSRCManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A59625E51A45F4250056303D /* Debug */,
@@ -484,20 +362,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A59625E71A45F4250056303D /* Build configuration list for PBXNativeTarget "iResource" */ = {
+		A59625E71A45F4250056303D /* Build configuration list for PBXNativeTarget "RSRCManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A59625E81A45F4250056303D /* Debug */,
 				A59625E91A45F4250056303D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A59625EA1A45F4250056303D /* Build configuration list for PBXNativeTarget "iResourceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A59625EB1A45F4250056303D /* Debug */,
-				A59625EC1A45F4250056303D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

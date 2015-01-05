@@ -1,4 +1,4 @@
-iResource
+RSRCManager
 =========
 Easy way to manage rsrc files
 
@@ -8,7 +8,7 @@ File extension: RSRC
 
 File type: Mac OS Resource File
 
-<img src="https://raw.githubusercontent.com/IGRSoft/iResource/master/Resources/screenshot.png">
+<img src="https://raw.githubusercontent.com/IGRSoft/RSRCManager/master/Resources/screenshot.png">
 
 Features
 =========

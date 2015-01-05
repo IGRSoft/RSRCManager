@@ -1,6 +1,6 @@
 //
 //  ResourceManager.m
-//  iResource
+//  RSRCManager
 //
 //  Created by Vitalii Parovishnyk on 12/22/14.
 //  Copyright (c) 2014 IGR Software. All rights reserved.
