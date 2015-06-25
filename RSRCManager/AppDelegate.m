@@ -10,7 +10,7 @@
 #import "RSRCManager.h"
 #import "PreviewCollectionView.h"
 
-#import <AppSandboxFileAccess/AppSandboxFileAccess.h>
+#import "AppSandboxFileAccess.h"
 
 #import <Quartz/Quartz.h>   // for QLPreviewPanel
 

@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		A51B42701A48932F00D27AFD /* PreviewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */; };
 		A51B42721A48AA0B00D27AFD /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B42711A48AA0B00D27AFD /* Quartz.framework */; };
-		A54A6F261B3C3AB100FD9771 /* AppSandboxFileAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54A6F211B3C3A8E00FD9771 /* AppSandboxFileAccess.framework */; };
-		A54A6F271B3C3AB100FD9771 /* AppSandboxFileAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54A6F211B3C3A8E00FD9771 /* AppSandboxFileAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A54A6F2B1B3C3C5D00FD9771 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59625FA1A460BDB0056303D /* MainMenu.xib */; };
+		A54A6F381B3C53E800FD9771 /* AppSandboxFileAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A6F311B3C53E800FD9771 /* AppSandboxFileAccess.m */; };
+		A54A6F391B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A6F331B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m */; };
+		A54A6F3A1B3C53E800FD9771 /* AppSandboxFileAccessPersist.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A6F351B3C53E800FD9771 /* AppSandboxFileAccessPersist.m */; };
+		A54A6F3D1B3C542000FD9771 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A596260E1A4610570056303D /* AppKit.framework */; };
 		A59625CE1A45F4250056303D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CD1A45F4250056303D /* AppDelegate.m */; };
 		A59625D01A45F4250056303D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CF1A45F4250056303D /* main.m */; };
 		A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */; };
@@ -24,57 +26,18 @@
 		A5B600391A4816E400039CDF /* ResourceEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B600381A4816E400039CDF /* ResourceEntities.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A54A6F201B3C3A8E00FD9771 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 201DCD2D1840BDE600B43456;
-			remoteInfo = AppSandboxFileAccess;
-		};
-		A54A6F221B3C3A8E00FD9771 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C212FED41A7E8B6700BE3532;
-			remoteInfo = AppSandboxFileAccessTests;
-		};
-		A54A6F241B3C3A8E00FD9771 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C212FEE41A7E944E00BE3532;
-			remoteInfo = AppSandboxFileAccessDemo;
-		};
-		A54A6F281B3C3AB100FD9771 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 201DCD2C1840BDE600B43456;
-			remoteInfo = AppSandboxFileAccess;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A54A6F2A1B3C3AB100FD9771 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A54A6F271B3C3AB100FD9771 /* AppSandboxFileAccess.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		A51B426E1A48932F00D27AFD /* PreviewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewCollectionView.h; sourceTree = "<group>"; };
 		A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewCollectionView.m; sourceTree = "<group>"; };
 		A51B42711A48AA0B00D27AFD /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		A54A6EE91B3C323400FD9771 /* RSRCManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RSRCManager.entitlements; sourceTree = "<group>"; };
-		A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AppSandboxFileAccess.xcodeproj; sourceTree = "<group>"; };
+		A54A6F301B3C53E800FD9771 /* AppSandboxFileAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSandboxFileAccess.h; sourceTree = "<group>"; };
+		A54A6F311B3C53E800FD9771 /* AppSandboxFileAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSandboxFileAccess.m; sourceTree = "<group>"; };
+		A54A6F321B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSandboxFileAccessOpenSavePanelDelegate.h; sourceTree = "<group>"; };
+		A54A6F331B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSandboxFileAccessOpenSavePanelDelegate.m; sourceTree = "<group>"; };
+		A54A6F341B3C53E800FD9771 /* AppSandboxFileAccessPersist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSandboxFileAccessPersist.h; sourceTree = "<group>"; };
+		A54A6F351B3C53E800FD9771 /* AppSandboxFileAccessPersist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSandboxFileAccessPersist.m; sourceTree = "<group>"; };
+		A54A6F3E1B3C56DA00FD9771 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		A59625C71A45F4250056303D /* RSRCManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSRCManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59625CB1A45F4250056303D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A59625CC1A45F4250056303D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -103,9 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54A6F3D1B3C542000FD9771 /* AppKit.framework in Frameworks */,
 				A51B42721A48AA0B00D27AFD /* Quartz.framework in Frameworks */,
 				A59626101A4610570056303D /* Cocoa.framework in Frameworks */,
-				A54A6F261B3C3AB100FD9771 /* AppSandboxFileAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,27 +78,31 @@
 		A54A6EEA1B3C3A8E00FD9771 /* Subprojects */ = {
 			isa = PBXGroup;
 			children = (
-				A54A6EEB1B3C3A8E00FD9771 /* AppSandboxFileAccess */,
+				A54A6F371B3C53E800FD9771 /* AppSandboxFileAccess */,
 			);
 			path = Subprojects;
 			sourceTree = "<group>";
 		};
-		A54A6EEB1B3C3A8E00FD9771 /* AppSandboxFileAccess */ = {
+		A54A6F361B3C53E800FD9771 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */,
+				A54A6F301B3C53E800FD9771 /* AppSandboxFileAccess.h */,
+				A54A6F311B3C53E800FD9771 /* AppSandboxFileAccess.m */,
+				A54A6F321B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.h */,
+				A54A6F331B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m */,
+				A54A6F341B3C53E800FD9771 /* AppSandboxFileAccessPersist.h */,
+				A54A6F351B3C53E800FD9771 /* AppSandboxFileAccessPersist.m */,
 			);
-			path = AppSandboxFileAccess;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		A54A6EF81B3C3A8E00FD9771 /* Products */ = {
+		A54A6F371B3C53E800FD9771 /* AppSandboxFileAccess */ = {
 			isa = PBXGroup;
 			children = (
-				A54A6F211B3C3A8E00FD9771 /* AppSandboxFileAccess.framework */,
-				A54A6F231B3C3A8E00FD9771 /* AppSandboxFileAccessTests.xctest */,
-				A54A6F251B3C3A8E00FD9771 /* AppSandboxFileAccessDemo.app */,
+				A54A6F361B3C53E800FD9771 /* Classes */,
 			);
-			name = Products;
+			name = AppSandboxFileAccess;
+			path = AppSandboxFileAccess/AppSandboxFileAccess;
 			sourceTree = "<group>";
 		};
 		A59625BE1A45F4250056303D = {
@@ -160,6 +127,7 @@
 		A59625C91A45F4250056303D /* RSRCManager */ = {
 			isa = PBXGroup;
 			children = (
+				A54A6F3E1B3C56DA00FD9771 /* Prefix.pch */,
 				A5B6002F1A48134800039CDF /* ResourceManager */,
 				A59625CC1A45F4250056303D /* AppDelegate.h */,
 				A59625CD1A45F4250056303D /* AppDelegate.m */,
@@ -228,12 +196,10 @@
 				A59625C31A45F4250056303D /* Sources */,
 				A59625C41A45F4250056303D /* Frameworks */,
 				A59625C51A45F4250056303D /* Resources */,
-				A54A6F2A1B3C3AB100FD9771 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A54A6F291B3C3AB100FD9771 /* PBXTargetDependency */,
 			);
 			name = RSRCManager;
 			productName = iResource;
@@ -271,42 +237,12 @@
 			mainGroup = A59625BE1A45F4250056303D;
 			productRefGroup = A59625C81A45F4250056303D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A54A6EF81B3C3A8E00FD9771 /* Products */;
-					ProjectRef = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				A59625C61A45F4250056303D /* RSRCManager */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A54A6F211B3C3A8E00FD9771 /* AppSandboxFileAccess.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AppSandboxFileAccess.framework;
-			remoteRef = A54A6F201B3C3A8E00FD9771 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A54A6F231B3C3A8E00FD9771 /* AppSandboxFileAccessTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AppSandboxFileAccessTests.xctest;
-			remoteRef = A54A6F221B3C3A8E00FD9771 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A54A6F251B3C3A8E00FD9771 /* AppSandboxFileAccessDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = AppSandboxFileAccessDemo.app;
-			remoteRef = A54A6F241B3C3A8E00FD9771 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A59625C51A45F4250056303D /* Resources */ = {
@@ -330,22 +266,17 @@
 				A59625D01A45F4250056303D /* main.m in Sources */,
 				A5B600351A48134800039CDF /* ResourceManager.m in Sources */,
 				A5B600391A4816E400039CDF /* ResourceEntities.m in Sources */,
+				A54A6F381B3C53E800FD9771 /* AppSandboxFileAccess.m in Sources */,
 				A5B600361A48134800039CDF /* RSRCManager.m in Sources */,
 				A59625CE1A45F4250056303D /* AppDelegate.m in Sources */,
 				A51B42701A48932F00D27AFD /* PreviewCollectionView.m in Sources */,
 				A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */,
+				A54A6F3A1B3C53E800FD9771 /* AppSandboxFileAccessPersist.m in Sources */,
+				A54A6F391B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A54A6F291B3C3AB100FD9771 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AppSandboxFileAccess;
-			targetProxy = A54A6F281B3C3AB100FD9771 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A59625FA1A460BDB0056303D /* MainMenu.xib */ = {
@@ -456,6 +387,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSRCManager/RSRCManager.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = RSRCManager/Prefix.pch;
 				INFOPLIST_FILE = RSRCManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = RSRCManager;
@@ -470,6 +402,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSRCManager/RSRCManager.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = RSRCManager/Prefix.pch;
 				INFOPLIST_FILE = RSRCManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = RSRCManager;

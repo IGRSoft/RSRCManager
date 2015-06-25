@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'RSRCManager' target in the 'RSRCManager' project
+//
+
+#ifdef __OBJC__
+    #import <AppKit/AppKit.h>
+#endif
