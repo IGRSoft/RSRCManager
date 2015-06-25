@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		A51B42701A48932F00D27AFD /* PreviewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */; };
 		A51B42721A48AA0B00D27AFD /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B42711A48AA0B00D27AFD /* Quartz.framework */; };
+		A54A6F261B3C3AB100FD9771 /* AppSandboxFileAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54A6F211B3C3A8E00FD9771 /* AppSandboxFileAccess.framework */; };
+		A54A6F271B3C3AB100FD9771 /* AppSandboxFileAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A54A6F211B3C3A8E00FD9771 /* AppSandboxFileAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A54A6F2B1B3C3C5D00FD9771 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59625FA1A460BDB0056303D /* MainMenu.xib */; };
 		A59625CE1A45F4250056303D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CD1A45F4250056303D /* AppDelegate.m */; };
 		A59625D01A45F4250056303D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CF1A45F4250056303D /* main.m */; };
 		A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625F61A45FE8E0056303D /* ResourceCollectionItemView.m */; };
-		A59626021A460BDB0056303D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59625FA1A460BDB0056303D /* MainMenu.xib */; };
 		A59626031A460BDB0056303D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A59625FD1A460BDB0056303D /* Credits.rtf */; };
 		A59626041A460BDB0056303D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A59625FF1A460BDB0056303D /* InfoPlist.strings */; };
 		A59626051A460BDB0056303D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A59626011A460BDB0056303D /* Images.xcassets */; };
@@ -22,10 +24,57 @@
 		A5B600391A4816E400039CDF /* ResourceEntities.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B600381A4816E400039CDF /* ResourceEntities.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A54A6F201B3C3A8E00FD9771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 201DCD2D1840BDE600B43456;
+			remoteInfo = AppSandboxFileAccess;
+		};
+		A54A6F221B3C3A8E00FD9771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C212FED41A7E8B6700BE3532;
+			remoteInfo = AppSandboxFileAccessTests;
+		};
+		A54A6F241B3C3A8E00FD9771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C212FEE41A7E944E00BE3532;
+			remoteInfo = AppSandboxFileAccessDemo;
+		};
+		A54A6F281B3C3AB100FD9771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 201DCD2C1840BDE600B43456;
+			remoteInfo = AppSandboxFileAccess;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A54A6F2A1B3C3AB100FD9771 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A54A6F271B3C3AB100FD9771 /* AppSandboxFileAccess.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A51B426E1A48932F00D27AFD /* PreviewCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewCollectionView.h; sourceTree = "<group>"; };
 		A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewCollectionView.m; sourceTree = "<group>"; };
 		A51B42711A48AA0B00D27AFD /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		A54A6EE91B3C323400FD9771 /* RSRCManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RSRCManager.entitlements; sourceTree = "<group>"; };
+		A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AppSandboxFileAccess.xcodeproj; sourceTree = "<group>"; };
 		A59625C71A45F4250056303D /* RSRCManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSRCManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59625CB1A45F4250056303D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A59625CC1A45F4250056303D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,15 +105,43 @@
 			files = (
 				A51B42721A48AA0B00D27AFD /* Quartz.framework in Frameworks */,
 				A59626101A4610570056303D /* Cocoa.framework in Frameworks */,
+				A54A6F261B3C3AB100FD9771 /* AppSandboxFileAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A54A6EEA1B3C3A8E00FD9771 /* Subprojects */ = {
+			isa = PBXGroup;
+			children = (
+				A54A6EEB1B3C3A8E00FD9771 /* AppSandboxFileAccess */,
+			);
+			path = Subprojects;
+			sourceTree = "<group>";
+		};
+		A54A6EEB1B3C3A8E00FD9771 /* AppSandboxFileAccess */ = {
+			isa = PBXGroup;
+			children = (
+				A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */,
+			);
+			path = AppSandboxFileAccess;
+			sourceTree = "<group>";
+		};
+		A54A6EF81B3C3A8E00FD9771 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A54A6F211B3C3A8E00FD9771 /* AppSandboxFileAccess.framework */,
+				A54A6F231B3C3A8E00FD9771 /* AppSandboxFileAccessTests.xctest */,
+				A54A6F251B3C3A8E00FD9771 /* AppSandboxFileAccessDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A59625BE1A45F4250056303D = {
 			isa = PBXGroup;
 			children = (
+				A54A6EEA1B3C3A8E00FD9771 /* Subprojects */,
 				A59625C91A45F4250056303D /* RSRCManager */,
 				A59625ED1A45F4B60056303D /* Resources */,
 				A596260C1A4610420056303D /* Frameworks */,
@@ -98,6 +175,7 @@
 		A59625CA1A45F4250056303D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A54A6EE91B3C323400FD9771 /* RSRCManager.entitlements */,
 				A59625CB1A45F4250056303D /* Info.plist */,
 				A59625CF1A45F4250056303D /* main.m */,
 			);
@@ -150,10 +228,12 @@
 				A59625C31A45F4250056303D /* Sources */,
 				A59625C41A45F4250056303D /* Frameworks */,
 				A59625C51A45F4250056303D /* Resources */,
+				A54A6F2A1B3C3AB100FD9771 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A54A6F291B3C3AB100FD9771 /* PBXTargetDependency */,
 			);
 			name = RSRCManager;
 			productName = iResource;
@@ -171,6 +251,12 @@
 				TargetAttributes = {
 					A59625C61A45F4250056303D = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = DMP42GVPJ3;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -185,6 +271,12 @@
 			mainGroup = A59625BE1A45F4250056303D;
 			productRefGroup = A59625C81A45F4250056303D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A54A6EF81B3C3A8E00FD9771 /* Products */;
+					ProjectRef = A54A6EF71B3C3A8E00FD9771 /* AppSandboxFileAccess.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A59625C61A45F4250056303D /* RSRCManager */,
@@ -192,12 +284,36 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		A54A6F211B3C3A8E00FD9771 /* AppSandboxFileAccess.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AppSandboxFileAccess.framework;
+			remoteRef = A54A6F201B3C3A8E00FD9771 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A54A6F231B3C3A8E00FD9771 /* AppSandboxFileAccessTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AppSandboxFileAccessTests.xctest;
+			remoteRef = A54A6F221B3C3A8E00FD9771 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A54A6F251B3C3A8E00FD9771 /* AppSandboxFileAccessDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = AppSandboxFileAccessDemo.app;
+			remoteRef = A54A6F241B3C3A8E00FD9771 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		A59625C51A45F4250056303D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A59626021A460BDB0056303D /* MainMenu.xib in Resources */,
+				A54A6F2B1B3C3C5D00FD9771 /* MainMenu.xib in Resources */,
 				A59626051A460BDB0056303D /* Images.xcassets in Resources */,
 				A59626041A460BDB0056303D /* InfoPlist.strings in Resources */,
 				A59626031A460BDB0056303D /* Credits.rtf in Resources */,
@@ -222,6 +338,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A54A6F291B3C3AB100FD9771 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AppSandboxFileAccess;
+			targetProxy = A54A6F281B3C3AB100FD9771 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A59625FA1A460BDB0056303D /* MainMenu.xib */ = {
@@ -285,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -318,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -329,10 +453,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "IGR Software";
+				CODE_SIGN_ENTITLEMENTS = RSRCManager/RSRCManager.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = RSRCManager/Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = RSRCManager;
 			};
 			name = Debug;
@@ -342,10 +467,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "IGR Software";
+				CODE_SIGN_ENTITLEMENTS = RSRCManager/RSRCManager.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = RSRCManager/Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = RSRCManager;
 			};
 			name = Release;

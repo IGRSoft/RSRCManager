@@ -10,6 +10,8 @@
 #import "RSRCManager.h"
 #import "PreviewCollectionView.h"
 
+#import <AppSandboxFileAccess/AppSandboxFileAccess.h>
+
 #import <Quartz/Quartz.h>   // for QLPreviewPanel
 
 @interface AppDelegate () <QLPreviewPanelDataSource, QLPreviewPanelDelegate, QuickLookCollectionViewDelegate>
@@ -154,15 +156,35 @@
 
 - (void)saveResource:(ResourceEntities *)resourceEntity
 {
-	if (![[NSFileManager defaultManager] fileExistsAtPath:self.exportPath.stringValue isDirectory:nil])
-	{
-		[[NSFileManager defaultManager] createDirectoryAtPath:self.exportPath.stringValue withIntermediateDirectories:YES attributes:nil error:nil];
-	}
+    AppSandboxFileAccess *fileAccess = [AppSandboxFileAccess fileAccess];
+    [fileAccess persistPermissionPath:self.exportPath.stringValue];
+    
+    BOOL accessAllowed = [fileAccess accessFilePath:self.exportPath.stringValue persistPermission:YES withBlock:^{
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:self.exportPath.stringValue isDirectory:nil])
+        {
+            NSError *error;
+            
+            if (![[NSFileManager defaultManager] createDirectoryAtPath:self.exportPath.stringValue withIntermediateDirectories:YES attributes:nil error:&error])
+            {
+                NSLog(@"Error can't create dir - %@: %@", self.exportPath.stringValue, error.localizedDescription);
+                
+                return;
+            }
+        }
+        
+        NSBitmapImageRep *imgRep = [[resourceEntity.image representations] objectAtIndex: 0];
+        NSData *data = [imgRep representationUsingType: NSPNGFileType properties: nil];
+        
+        [data writeToFile:[NSString stringWithFormat:@"%@/%@.png", self.exportPath.stringValue, resourceEntity.name]
+               atomically:NO];
+    }];
+    
+    if (!accessAllowed) {
+        NSLog(@"Sad Wookie");
+    }
+    
 	
-	NSBitmapImageRep *imgRep = [[resourceEntity.image representations] objectAtIndex: 0];
-	NSData *data = [imgRep representationUsingType: NSPNGFileType properties: nil];
-	
-	[data writeToFile: [NSString stringWithFormat:@"%@/%@.png", self.exportPath.stringValue, resourceEntity.name] atomically: NO];
 }
 
 #pragma mark - NSComboBoxDelegate
@@ -185,6 +207,8 @@
 	// Put defaults in the dictionary
 	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES );
 	NSString* theDesktopPath = [paths objectAtIndex:0];
+    theDesktopPath = [theDesktopPath stringByAppendingPathComponent:@"RSRCManagerExport"];
+    
 	defaultValues[@"ExportPath"] = theDesktopPath;
 	
 	// Register the dictionary of defaults

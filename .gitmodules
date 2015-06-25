@@ -1,0 +1,3 @@
+[submodule "Subprojects/AppSandboxFileAccess"]
+	path = Subprojects/AppSandboxFileAccess
+	url = https://github.com/leighmcculloch/AppSandboxFileAccess.git

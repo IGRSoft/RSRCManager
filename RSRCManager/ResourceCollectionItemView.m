@@ -33,20 +33,16 @@
 	NSBezierPath* imageRoundedRectanglePath = [NSBezierPath bezierPathWithRoundedRect:imageRect xRadius: 4 yRadius: 4];
 	NSColor* fillColor = nil;
 	NSColor* strokeColor = nil;
-	NSColor *filedColor = nil;
 	
 	if (_isSelected)
 	{
 		fillColor = [NSColor colorWithCalibratedWhite:0.850 alpha:1.000];
 		strokeColor = [NSColor colorWithCalibratedRed:0.400 green:0.650 blue:0.900 alpha:1.000];
-		
-		filedColor = [NSColor blackColor];
 	}
 	else
 	{
 		fillColor = [NSColor clearColor];
 		strokeColor = [NSColor colorWithCalibratedWhite:0.850 alpha:1.000];
-		filedColor = [NSColor grayColor];
 	}
 	
 	[fillColor setFill];
