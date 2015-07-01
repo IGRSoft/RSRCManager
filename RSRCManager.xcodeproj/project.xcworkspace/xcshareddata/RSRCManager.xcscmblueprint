@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EA2F99F98B60BF5C23527A22DC8898707C4905C0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7E8C8E8C1A74EF929B3E33B7C86B09FCB62D2359" : 0,
+    "EA2F99F98B60BF5C23527A22DC8898707C4905C0" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "457053AF-6A09-47A0-B4DD-2631B29E63A9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7E8C8E8C1A74EF929B3E33B7C86B09FCB62D2359" : "iResource\/Subprojects\/AppSandboxFileAccess",
+    "EA2F99F98B60BF5C23527A22DC8898707C4905C0" : "iResource"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RSRCManager",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RSRCManager.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/leighmcculloch\/AppSandboxFileAccess.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E8C8E8C1A74EF929B3E33B7C86B09FCB62D2359"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IGRSoft\/iResource.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EA2F99F98B60BF5C23527A22DC8898707C4905C0"
+    }
+  ]
+}
