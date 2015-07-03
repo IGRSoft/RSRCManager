@@ -12,7 +12,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-- (void)saveResource:(ResourceEntities *)resourceEntity;
+- (void)saveResource:(NSArray *)resourceEntity;
 
 - (IBAction)toggleQuickLook:(id)sender;
 

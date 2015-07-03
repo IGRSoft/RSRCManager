@@ -10,9 +10,6 @@
 		A51B42701A48932F00D27AFD /* PreviewCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */; };
 		A51B42721A48AA0B00D27AFD /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B42711A48AA0B00D27AFD /* Quartz.framework */; };
 		A54A6F2B1B3C3C5D00FD9771 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59625FA1A460BDB0056303D /* MainMenu.xib */; };
-		A54A6F381B3C53E800FD9771 /* AppSandboxFileAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A6F311B3C53E800FD9771 /* AppSandboxFileAccess.m */; };
-		A54A6F391B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A6F331B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m */; };
-		A54A6F3A1B3C53E800FD9771 /* AppSandboxFileAccessPersist.m in Sources */ = {isa = PBXBuildFile; fileRef = A54A6F351B3C53E800FD9771 /* AppSandboxFileAccessPersist.m */; };
 		A54A6F3D1B3C542000FD9771 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A596260E1A4610570056303D /* AppKit.framework */; };
 		A59625CE1A45F4250056303D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CD1A45F4250056303D /* AppDelegate.m */; };
 		A59625D01A45F4250056303D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A59625CF1A45F4250056303D /* main.m */; };
@@ -31,12 +28,6 @@
 		A51B426F1A48932F00D27AFD /* PreviewCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewCollectionView.m; sourceTree = "<group>"; };
 		A51B42711A48AA0B00D27AFD /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		A54A6EE91B3C323400FD9771 /* RSRCManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RSRCManager.entitlements; sourceTree = "<group>"; };
-		A54A6F301B3C53E800FD9771 /* AppSandboxFileAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSandboxFileAccess.h; sourceTree = "<group>"; };
-		A54A6F311B3C53E800FD9771 /* AppSandboxFileAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSandboxFileAccess.m; sourceTree = "<group>"; };
-		A54A6F321B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSandboxFileAccessOpenSavePanelDelegate.h; sourceTree = "<group>"; };
-		A54A6F331B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSandboxFileAccessOpenSavePanelDelegate.m; sourceTree = "<group>"; };
-		A54A6F341B3C53E800FD9771 /* AppSandboxFileAccessPersist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSandboxFileAccessPersist.h; sourceTree = "<group>"; };
-		A54A6F351B3C53E800FD9771 /* AppSandboxFileAccessPersist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSandboxFileAccessPersist.m; sourceTree = "<group>"; };
 		A54A6F3E1B3C56DA00FD9771 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		A59625C71A45F4250056303D /* RSRCManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSRCManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59625CB1A45F4250056303D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,40 +66,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A54A6EEA1B3C3A8E00FD9771 /* Subprojects */ = {
-			isa = PBXGroup;
-			children = (
-				A54A6F371B3C53E800FD9771 /* AppSandboxFileAccess */,
-			);
-			path = Subprojects;
-			sourceTree = "<group>";
-		};
-		A54A6F361B3C53E800FD9771 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				A54A6F301B3C53E800FD9771 /* AppSandboxFileAccess.h */,
-				A54A6F311B3C53E800FD9771 /* AppSandboxFileAccess.m */,
-				A54A6F321B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.h */,
-				A54A6F331B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m */,
-				A54A6F341B3C53E800FD9771 /* AppSandboxFileAccessPersist.h */,
-				A54A6F351B3C53E800FD9771 /* AppSandboxFileAccessPersist.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		A54A6F371B3C53E800FD9771 /* AppSandboxFileAccess */ = {
-			isa = PBXGroup;
-			children = (
-				A54A6F361B3C53E800FD9771 /* Classes */,
-			);
-			name = AppSandboxFileAccess;
-			path = AppSandboxFileAccess/AppSandboxFileAccess;
-			sourceTree = "<group>";
-		};
 		A59625BE1A45F4250056303D = {
 			isa = PBXGroup;
 			children = (
-				A54A6EEA1B3C3A8E00FD9771 /* Subprojects */,
 				A59625C91A45F4250056303D /* RSRCManager */,
 				A59625ED1A45F4B60056303D /* Resources */,
 				A596260C1A4610420056303D /* Frameworks */,
@@ -266,13 +226,10 @@
 				A59625D01A45F4250056303D /* main.m in Sources */,
 				A5B600351A48134800039CDF /* ResourceManager.m in Sources */,
 				A5B600391A4816E400039CDF /* ResourceEntities.m in Sources */,
-				A54A6F381B3C53E800FD9771 /* AppSandboxFileAccess.m in Sources */,
 				A5B600361A48134800039CDF /* RSRCManager.m in Sources */,
 				A59625CE1A45F4250056303D /* AppDelegate.m in Sources */,
 				A51B42701A48932F00D27AFD /* PreviewCollectionView.m in Sources */,
 				A59625F81A45FE8E0056303D /* ResourceCollectionItemView.m in Sources */,
-				A54A6F3A1B3C53E800FD9771 /* AppSandboxFileAccessPersist.m in Sources */,
-				A54A6F391B3C53E800FD9771 /* AppSandboxFileAccessOpenSavePanelDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

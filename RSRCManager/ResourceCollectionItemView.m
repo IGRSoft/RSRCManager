@@ -78,7 +78,7 @@
 	ResourceEntities *res = self.representedObject;
 	
 	AppDelegate *app = [[NSApplication sharedApplication] delegate];
-	[app saveResource:res];
+	[app saveResource:@[res]];
 }
 
 - (IBAction)quickLookFile:(id)sender

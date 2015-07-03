@@ -10,8 +10,6 @@
 #import "RSRCManager.h"
 #import "PreviewCollectionView.h"
 
-#import "AppSandboxFileAccess.h"
-
 #import <Quartz/Quartz.h>   // for QLPreviewPanel
 
 @interface AppDelegate () <QLPreviewPanelDataSource, QLPreviewPanelDelegate, QuickLookCollectionViewDelegate>
@@ -19,16 +17,19 @@
 @property (weak) IBOutlet NSWindow *window;
 @property (weak) IBOutlet PreviewCollectionView *collectionView;
 @property (weak) IBOutlet NSProgressIndicator *spinerView;
-@property (weak) IBOutlet NSTextField *exportPath;
+@property (weak) IBOutlet NSPathControl *exportPath;
 @property (weak) IBOutlet NSComboBox *typesBox;
+@property (weak) IBOutlet NSImageView *doneImage;
 
 @property (nonatomic, assign) BOOL hasResources;
 @property (nonatomic, strong) ResourceEntities *selectedResource;
+@property (nonatomic, strong) NSURL *exportUrl;
 
 - (IBAction)openFile:(id)sender;
 
 - (IBAction)exportSelectedResources:(id)sender;
 - (IBAction)exportAllResources:(id)sender;
+- (IBAction)selectExportPath:(id)sender;
 
 - (void)gatherResources;
 
@@ -37,13 +38,17 @@
 
 @end
 
+NSString *kExportPath = @"ExportPath";
+
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
 	// Insert code here to initialize your application
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
 	// Insert code here to tear down your application
 }
 
@@ -57,6 +62,13 @@
     [_collectionView setSelectable:YES];
 	_hasResources = NO;
 	_selectedResource = nil;
+    
+    // Put defaults in the dictionary
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES );
+    NSString* thePicturesPath = [paths firstObject];
+    thePicturesPath = [thePicturesPath stringByAppendingPathComponent:@"RSRCManagerExport"];
+    
+    self.exportUrl = [NSURL URLWithString:thePicturesPath];
 }
 
 #pragma mark - Actions
@@ -79,7 +91,7 @@
 	if (returnCode == NSModalResponseOK)
 	{
 		//get the selected file URLs
-		self.resourceURL = openPanel.URLs[0];
+		self.resourceURL = [openPanel.URLs firstObject];
 		[self gatherResources];
 		
 		NSDocument *document = [[NSDocument alloc] init];
@@ -130,23 +142,19 @@
 
 - (IBAction)exportAllResources:(id)sender
 {
-	[self.spinerView startAnimation:self];
-	[self.collectionView setHidden:YES];
-	
     NSArray *resources = self.resourceData[self.typesBox.stringValue];
     
-	for (ResourceEntities *item in resources)
-	{
-		[self saveResource:item];
-	}
-	
-	[self.collectionView setHidden:NO];
-	[self.spinerView stopAnimation:self];
+	[self saveResource:resources];
+}
+
+- (IBAction)selectExportPath:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openFile:self.exportUrl.path];
 }
 
 - (IBAction)exportSelectedResources:(id)sender
 {
-	[self saveResource:self.selectedResource];
+	[self saveResource:@[self.selectedResource]];
 }
 
 - (IBAction)toggleQuickLook:(id)sender
@@ -154,37 +162,58 @@
 	[self didPressSpacebarForCollectionView:self.collectionView];
 }
 
-- (void)saveResource:(ResourceEntities *)resourceEntity
+- (void)saveResource:(NSArray *)resourceEntitys
 {
-    AppSandboxFileAccess *fileAccess = [AppSandboxFileAccess fileAccess];
-    [fileAccess persistPermissionPath:self.exportPath.stringValue];
+    [self.spinerView startAnimation:self];
+    [self.collectionView setHidden:YES];
     
-    BOOL accessAllowed = [fileAccess accessFilePath:self.exportPath.stringValue persistPermission:YES withBlock:^{
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:self.exportPath.stringValue isDirectory:nil])
+    NSError *error;
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:self.exportPath.URL.path isDirectory:nil])
+    {
+        if (![[NSFileManager defaultManager] createDirectoryAtPath:self.exportPath.URL.path
+                                       withIntermediateDirectories:YES
+                                                        attributes:nil error:&error])
         {
-            NSError *error;
+            NSLog(@"Error can't create dir - %@: %@", self.exportPath.URL, error.localizedDescription);
             
-            if (![[NSFileManager defaultManager] createDirectoryAtPath:self.exportPath.stringValue withIntermediateDirectories:YES attributes:nil error:&error])
-            {
-                NSLog(@"Error can't create dir - %@: %@", self.exportPath.stringValue, error.localizedDescription);
-                
-                return;
-            }
+            return;
         }
-        
-        NSBitmapImageRep *imgRep = [[resourceEntity.image representations] objectAtIndex: 0];
-        NSData *data = [imgRep representationUsingType: NSPNGFileType properties: nil];
-        
-        [data writeToFile:[NSString stringWithFormat:@"%@/%@.png", self.exportPath.stringValue, resourceEntity.name]
-               atomically:NO];
-    }];
-    
-    if (!accessAllowed) {
-        NSLog(@"Sad Wookie");
     }
     
-	
+    for (ResourceEntities *item in resourceEntitys)
+    {
+        NSBitmapImageRep *imgRep = [[item.image representations] firstObject];
+        NSData *data = [imgRep representationUsingType: NSPNGFileType properties: nil];
+        
+        [data writeToFile:[NSString stringWithFormat:@"%@/%@.png", self.exportPath.URL.path, item.name]
+               atomically:NO];
+    }
+    
+    [self.collectionView setHidden:NO];
+    [self.spinerView stopAnimation:self];
+    
+    if (error)
+    {
+        NSLog(@"No Access to %@", self.exportPath.URL);
+    }
+    else
+    {
+        self.doneImage.hidden = NO;
+        self.doneImage.alphaValue = 1.0;
+        
+        __weak typeof(self) weakSelf = self;
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+            
+            [context setDuration:1.0];
+            [weakSelf.doneImage.animator setAlphaValue:0.0];
+            
+        } completionHandler:^{
+            
+            weakSelf.doneImage.hidden = YES;
+            weakSelf.doneImage.alphaValue = 0.0;
+        }];
+    }
 }
 
 #pragma mark - NSComboBoxDelegate
@@ -202,17 +231,17 @@
 + (void)initialize
 {
 	// Create a dictionary
-	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
-	
-	// Put defaults in the dictionary
-	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES );
-	NSString* theDesktopPath = [paths objectAtIndex:0];
-    theDesktopPath = [theDesktopPath stringByAppendingPathComponent:@"RSRCManagerExport"];
-    
-	defaultValues[@"ExportPath"] = theDesktopPath;
-	
-	// Register the dictionary of defaults
-	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
+//	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+//	
+//	// Put defaults in the dictionary
+//	NSArray* paths = NSSearchPathForDirectoriesInDomains(NSPicturesDirectory, NSUserDomainMask, YES );
+//	NSString* thePicturesPath = [paths firstObject];
+//    thePicturesPath = [thePicturesPath stringByAppendingPathComponent:@"RSRCManagerExport"];
+//    
+//	defaultValues[kExportPath] = thePicturesPath;
+//	
+//	// Register the dictionary of defaults
+//	[[NSUserDefaults standardUserDefaults] registerDefaults: defaultValues];
 }
 
 #pragma mark - NSApplicationDelegate
@@ -312,6 +341,15 @@
 	}
 	
 	return NO;
+}
+
+- (void)setExportUrl:(NSURL *)exportUrl
+{
+    _exportUrl = exportUrl;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:exportUrl.path forKey:kExportPath];
+    [userDefaults synchronize];
 }
 
 @end
