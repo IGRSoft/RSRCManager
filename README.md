@@ -1,4 +1,4 @@
-RSRCManager
+[DEPRECATED] RSRCManager
 =========
 Easy way to manage rsrc files
 
