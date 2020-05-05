@@ -1,4 +1,7 @@
-[DEPRECATED] RSRCManager
+[The Project is not served, please, enjoy forward :)]
+==
+
+RSRCManager
 =========
 Easy way to manage rsrc files
 
